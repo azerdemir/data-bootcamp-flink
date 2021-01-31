@@ -1,4 +1,4 @@
-package com.trendyol.bootcamp.flink
+package com.trendyol.bootcamp.flink.common
 
 import org.apache.flink.configuration.Configuration
 import org.apache.flink.streaming.api.functions.source.{RichParallelSourceFunction, SourceFunction}
@@ -10,6 +10,18 @@ class RandomEventSource extends RichParallelSourceFunction[Event] {
   var cancelled: Boolean = false
   var maxTs: Long        = System.currentTimeMillis() / 1000
   var random: Random     = _
+
+  val eventTypes = List(
+    AddToFavorites,
+    RemoveFromFavorites,
+    AddToBasket,
+    RemoveFromBasket,
+    DisplayBasket,
+    CompletePurchase,
+    Logout,
+    Login,
+    DisplayOrders
+  )
 
   override def open(parameters: Configuration): Unit = {
     super.open(parameters)

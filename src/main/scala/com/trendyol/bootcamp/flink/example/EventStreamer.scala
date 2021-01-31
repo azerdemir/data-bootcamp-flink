@@ -1,5 +1,7 @@
-package com.trendyol.bootcamp.flink
+package com.trendyol.bootcamp.flink.example
 
+import com.trendyol.bootcamp.flink.common.RandomEventSource
+import com.trendyol.bootcamp.flink.common._
 import org.apache.flink.api.common.eventtime.{SerializableTimestampAssigner, WatermarkStrategy}
 import org.apache.flink.api.common.restartstrategy.RestartStrategies
 import org.apache.flink.api.scala._
@@ -15,6 +17,8 @@ import org.slf4j.{Logger, LoggerFactory}
 
 import java.time.Duration
 
+case class UserStats(userId: Int, eventCount: Int, windowStart: Long, windowEnd: Long)
+
 object EventStreamer {
 
   val logger: Logger = LoggerFactory.getLogger(this.getClass)
@@ -26,7 +30,7 @@ object EventStreamer {
 
     val keyedStream = env
       .addSource(new RandomEventSource)
-      .filter(e => List(AddToBasket, AddToFavorites, GoToBasket).contains(e.eventType))
+      .filter(e => List(AddToBasket, AddToFavorites, DisplayBasket).contains(e.eventType))
       .assignTimestampsAndWatermarks(
         WatermarkStrategy
           .forBoundedOutOfOrderness(Duration.ofSeconds(10))
