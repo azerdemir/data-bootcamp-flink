@@ -4,7 +4,7 @@ In this homework, you will calculate likelihood to purchase ratios based on user
 
 A coefficient map is provided in `LikelihoodToPurchaseCalculator` source file as `l2pCoefficients`. Note that four event types has no effect on purchase, which are `CompletePurchase`, `Logout`, `Login`, `DisplayOrders`.
 
-## Expected
+## Expectations
 * Use RandomEventSource as source operator,
 * Use PrintSinkFunction as sink operator (This is not mandatory, you can choose some other sink if you want to try one),
 * Use 20 seconds for time window interval,
