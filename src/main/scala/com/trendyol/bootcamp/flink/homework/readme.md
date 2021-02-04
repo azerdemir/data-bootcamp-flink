@@ -1,6 +1,6 @@
 # Likelihood to Purchase Calculator Homework
 
-In this homework, you will calculate likelihood to purchase ratios based on user and products.
+In this homework, you will calculate likelihood to purchase ratios **based on user and products**.
 
 A coefficient map is provided in `LikelihoodToPurchaseCalculator` source file as `l2pCoefficients`. Note that four event types has no effect on purchase, which are `CompletePurchase`, `Logout`, `Login`, `DisplayOrders`.
 
